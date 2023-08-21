@@ -184,7 +184,7 @@ function searchIngredients(allDishes) {
 function generateCuisineDishName(allDishes) {
     alert("Combining cuisine and dish names...")
     let results = dishes.map(function(el){
-        return el.cuisine + "" + el.name 
+        return el.cuisine + " " + el.name 
     })
     alert("Successfully combined cuisine and dish names!  Check the console for full output.")
     return results
@@ -221,7 +221,7 @@ function textMessage(dishOfTheDay) {
     This is an automated text message alert.
     Today's Dish of the day is:
 
-    <DISH OF THE DAY HERE>
+    ${todaysSpecialDish.cuisine + " " + todaysSpecialDish.name}
 
     We hope to see you in soon!
 
@@ -236,9 +236,11 @@ function textMessage(dishOfTheDay) {
 
 function generateMarketingMessage(dishOfTheDay, messageTypeCallback) {
     alert('Sending final message to all 389 customers...')
+    let marketingMessage = messageTypeCallback(dishOfTheDay);
     // TODO #7: Call the passed-in callback function on the dishOfTheDay.  Save the result as a variable
     // Then, log that result to the console
     alert('Success!  Check the console for a copy of the final marketing message!')
+    console.log(marketingMessage);
 }
 
 // <<<<<<<<<<<<<<<<< CUSTOM PROMPT FUNCTION <<<<<<<<<<<<<<<<<
@@ -286,12 +288,12 @@ function runApp(allDishes, specialDish) {
             console.log(concatenatedDishes)
             break
         case "6":
-            let emailSent = emailMessage(todaysSpecialDish)
-            console.log(emailSent);
+            generateMarketingMessage(todaysSpecialDish, textMessage); 
             // TODO #8: Call the appropriate function to generate the marketing text message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
             break
         case "7":
+            generateMarketingMessage(todaysSpecialDish, emailMessage);
             // TODO #9: Call the appropriate function to generate the marketing email message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
             break
