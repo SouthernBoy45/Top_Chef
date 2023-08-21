@@ -184,7 +184,7 @@ function searchIngredients(allDishes) {
 function generateCuisineDishName(allDishes) {
     alert("Combining cuisine and dish names...")
     let results = dishes.map(function(el){
-        return el.cuisine + "" + el.name
+        return el.cuisine + "" + el.name 
     })
     alert("Successfully combined cuisine and dish names!  Check the console for full output.")
     return results
@@ -200,7 +200,7 @@ function emailMessage(dishOfTheDay) {
     Thank you for subscribing to email alert messages!
     Today's Dish of the day is:
 
-    <DISH OF THE DAY HERE>
+    ${todaysSpecialDish.cuisine + " " + todaysSpecialDish.name}
 
     We hope to see you in soon!
 
@@ -286,6 +286,8 @@ function runApp(allDishes, specialDish) {
             console.log(concatenatedDishes)
             break
         case "6":
+            let emailSent = emailMessage(todaysSpecialDish)
+            console.log(emailSent);
             // TODO #8: Call the appropriate function to generate the marketing text message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
             break
