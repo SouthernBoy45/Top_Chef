@@ -155,10 +155,17 @@ function findItalianFood(allDishes) {
     return results
 }
 
+// TODO #3: Gather user input for a cuisine to search for, then filter for all dishes matching this cuisine type
 function searchCuisines(allDishes) {
     alert("Searching for dishes by cuisine...")
-    // TODO #3: Gather user input for a cuisine to search for, then filter for all dishes matching this cuisine type
+    let userInput = prompt("What cuisine would you like today?")
+    let results = allDishes.filter(function (el) {
+        if (el.cuisine.includes(userInput)){
+            return true;
+    }
+    })
     alert("Found all dishes matching the cuisine search term!  Check the console for full output")
+    return results
 }
 
 function searchIngredients(allDishes) {
